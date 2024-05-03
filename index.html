@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<title>CLOCK</title>
+<body>
+<h1>Hello World</h1>
+<div class="clock">
+      <img src="https://dl.dropbox.com/s/f3b3lyanili7zl2/clock%20template-01.svg?raw=1">
+      <div class="hour hand" id="hour"></div>
+      <div class="minute hand" id="minute"></div>
+      <div class="seconds hand" id="seconds"></div>
+    </div>
+    <style>
+body{
+  background: url(https://dl.dropbox.com/s/8bojjv34k37t16m/Webp.net-resizeimage%20%282%29.jpg?raw=1) no-repeat center center fixed;
+  background-size: cover;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+}
+.clock{
+  height: 320px;
+  width: 320px;
+  background-color: rgba(255,255,255,0.06);
+  backdrop-filter: blur(20px);
+  border-radius: 50%;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  box-shadow: 30px 30px 35px rgba(0,0,0,0.25);
+  border: 2px solid rgba(255,255,255,0.1);
+}
+img{
+  opacity: 0.6;
+}
+.hand{
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  background-color: rgba(255,255,255,0.2);
+  backdrop-filter: blur(20px);
+  border-radius: 5px;
+  transform-origin: bottom;
+}
+.hour{
+  height: 60px;
+  width: 10px;
+  top: 100px;
+}
+.minute{
+  height: 80px;
+  width: 5px;
+  top: 80px;
+}
+.seconds{
+  height: 90px;
+  width: 3px;
+  top: 70px;
+}
+</style>
+<script>
+var hour = document.getElementById("hour");
+var minute = document.getElementById("minute");
+var seconds = document.getElementById("seconds");
+
+var set_clock = setInterval(
+  function clock(){
+    var date_now = new Date();
+    var hr = date_now.getHours();
+    var min = date_now.getMinutes();
+    var sec = date_now.getSeconds();
+    var calc_hr = (hr * 30) + (min / 2);
+    var calc_min =    (min * 6)  ;
+    var calc_sec = sec * 6 ;
+    hour.style.transform = "rotate(" + calc_hr + "deg)";
+    minute.style.transform = "rotate(" + calc_min + "deg)";
+    seconds.style.transform = "rotate(" + calc_sec + "deg)";
+}, 1000);
+</script>
+</body>
+</html>
